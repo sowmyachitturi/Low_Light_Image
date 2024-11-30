@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Light Image Enhancement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='camera.png') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&family=Sassy+Frass&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="site-name">
+                <h2><i class="fas fa-magic"></i> Image Enhancement Tool</h2> <!-- Icon added to site name -->
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="https://www.linkedin.com/in/chitturi-sowmya-5a257224b/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/sowmyachitturi" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <h1>Enhance Your Images Instantly</h1>
+            <p>Upload your low-light images and let our tool transform them into stunning visuals.</p>
+        </div>
+    </header>
+
+    <!-- Upload Form Section -->
+    <section class="upload-section">
+        <h2>Upload Your Image</h2>
+        <form action="https://low-light-image-enhancement-pjwu.onrender.com/" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <input type="submit" value="Enhance Image">
+        </form>
+    </section>
+
+    <!-- Results Section -->
+    {% if original_image and enhanced_image %}
+    <section class="results-section">
+        <h2>Results</h2>
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <img src="data:image/jpeg;base64,{{ original_image }}" alt="Original Image">
+                <a href="data:image/jpeg;base64,{{ original_image }}" download="original_image.jpg"
+                    class="download-btn">
+                    Download Original
+                </a>
+            </div>
+            <div class="image-box">
+                <h3>Enhanced Image</h3>
+                <img src="data:image/jpeg;base64,{{ enhanced_image }}" alt="Enhanced Image">
+                <a href="data:image/jpeg;base64,{{ enhanced_image }}" download="enhanced_image.jpg"
+                    class="download-btn">
+                    Download Enhanced
+                </a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Developed by Sowmya chitturi | <a href="mailto:sowmyachitturi340@gmail.com">Contact Me</a></p>
+    </footer>
+</body>
+
+</html>
